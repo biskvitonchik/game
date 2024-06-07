@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { useGameStore } from "@/store/GameStore";
-const gameStore = useGameStore();
+// import { useGameStore } from "@/store/GameStore";
+// const gameStore = useGameStore();
 </script>
 
 <style scoped lang="scss">

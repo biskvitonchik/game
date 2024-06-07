@@ -24,7 +24,6 @@ export const useGameStore = defineStore("gameStore", () => {
     level.value = index;
   };
 
-
   return {
     playing,
     levelsQuantity,
@@ -32,6 +31,6 @@ export const useGameStore = defineStore("gameStore", () => {
     initalIconsArray,
     level,
     setLevel,
-    selectedIconsArray
+    selectedIconsArray,
   };
 });

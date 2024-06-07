@@ -24,26 +24,22 @@ const startGame = (index: number) => {
   gameStore.setLevel(index);
   gameStore.playing = true;
 
-
-switch (gameStore.cardsQuantityArray[index]) {
+  switch (gameStore.cardsQuantityArray[index]) {
     case 10:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
+      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
       break;
     case 12:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
-    break;
+      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
+      break;
     case 14:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
+      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
       break;
     case 16:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 8);
+      gameStore.selectedIconsArray = gameStore.initalIconsArray;
       break;
   }
   console.log(gameStore.selectedIconsArray);
-  
 };
-
-
 </script>
 
 <style lang="scss">
