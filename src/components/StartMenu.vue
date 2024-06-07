@@ -22,9 +22,27 @@ const gameStore = useGameStore();
 
 const startGame = (index: number) => {
   gameStore.setLevel(index);
-  gameStore.selectedQuantityCards = (gameStore.cardsQuantityArray[index]);
   gameStore.playing = true;
+
+
+switch (gameStore.cardsQuantityArray[index]) {
+    case 10:
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
+      break;
+    case 12:
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
+    break;
+    case 14:
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
+      break;
+    case 16:
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 8);
+      break;
+  }
+  console.log(gameStore.selectedIconsArray);
+  
 };
+
 
 </script>
 

@@ -7,19 +7,6 @@
 <script setup lang="ts">
 import { useGameStore } from "@/store/GameStore";
 const gameStore = useGameStore();
-
-
-
-// switch (gameStore.selectedQuantityCards) {
-//     case 10:
-//       return iconsArray.slice(0, 5);
-//     case 12:
-//       return iconsArray.slice(0, 6);
-//     case 14:
-//       return iconsArray.slice(0, 7);
-//     case 16:
-//       return iconsArray.slice(0, 8);
-//   }
 </script>
 
 <style scoped lang="scss">

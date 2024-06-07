@@ -5,7 +5,7 @@ export const useGameStore = defineStore("gameStore", () => {
   const playing = false;
   const levelsQuantity = [1, 2, 3, 4];
   const cardsQuantityArray = [10, 12, 14, 16];
-  const iconsArray = [
+  const initalIconsArray = [
     "react",
     "vuejs",
     "bell",
@@ -17,7 +17,8 @@ export const useGameStore = defineStore("gameStore", () => {
   ];
 
   const level = ref(0);
-  const selectedQuantityCards = ref(0);
+
+  const selectedIconsArray: string[] = [];
 
   const setLevel = (index: number): void => {
     level.value = index;
@@ -28,9 +29,9 @@ export const useGameStore = defineStore("gameStore", () => {
     playing,
     levelsQuantity,
     cardsQuantityArray,
-    iconsArray,
+    initalIconsArray,
     level,
     setLevel,
-    selectedQuantityCards
+    selectedIconsArray
   };
 });
