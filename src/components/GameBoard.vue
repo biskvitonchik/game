@@ -24,7 +24,7 @@ import { useGameStore } from "@/store/GameStore";
 const store = useGameStore();
 const reset = () => {
   store.playing = false;
-  store.isCardClickable = true;
+  store.isClickable = true;
   store.flippedCards = [];
 };
 </script>

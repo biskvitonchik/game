@@ -18,16 +18,22 @@ export const useGameStore = defineStore("store", () => {
 
   const level = ref(0);
 
-  const selectedIconsArray: string[] = [];
-  const duplicateSelectedIconsArray: string[] = [];
-  const randomSelectedIconsArray: string[] = [];
+  const selectedIconsArray = ref<string[]>([]);
+  const duplicateSelectedIconsArray = ref<string[]>([]);
+  const randomSelectedIconsArray = ref<string[]>([]);
 
   const setLevel = (index: number): void => {
     level.value = index;
   };
 
-  const isCardClickable = ref(true);
-  const flippedCards: string[] = [];
+  const isClickable = ref(true);
+  const flippedCards = ref<string[]>([]);
+
+  const firstCard = ref<number | null>(null);
+  const secondCard = ref<number | null>(null);
+
+  const objOpenIcon = ref<{[key: number]: boolean}>({});
+
 
   return {
     playing,
@@ -39,7 +45,10 @@ export const useGameStore = defineStore("store", () => {
     selectedIconsArray,
     duplicateSelectedIconsArray,
     randomSelectedIconsArray,
-    isCardClickable,
+    isClickable,
     flippedCards,
+    firstCard,
+    secondCard,
+    objOpenIcon
   };
 });
