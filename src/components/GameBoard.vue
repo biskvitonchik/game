@@ -23,7 +23,7 @@ import { useGameStore } from "@/store/GameStore";
 
 const store = useGameStore();
 
-const reset = () => {
+const reset = ():void => {
   store.playing = false;
   store.isClickable = true;
   store.guessedСards = [];

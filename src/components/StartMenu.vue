@@ -41,12 +41,9 @@ const startGame = (index: number) => {
 
   store.duplicateSelectedIconsArray = store.selectedIconsArray;
   store.duplicateSelectedIconsArray.push(...store.selectedIconsArray);
-
   store.randomSelectedIconsArray = [...store.duplicateSelectedIconsArray].sort(
     () => 0.5 - Math.random()
   );
-
-  console.log(store.randomSelectedIconsArray);
 };
 </script>
 

@@ -2,10 +2,17 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useGameStore = defineStore("store", () => {
-  const playing = false;
-  const levelsQuantity = [1, 2, 3, 4];
-  const cardsQuantityArray = [10, 12, 14, 16];
-  const initalIconsArray = [
+  const playing = ref(false);
+  const level = ref<number>(0);
+  const isClickable = ref<boolean>(true);
+  const guessedСards = ref<number[]>([]);
+  const firstCard = ref<number | null>(null);
+  const secondCard = ref<number | null>(null);
+  const objOpenIcon = ref<{ [key: number]: boolean }>({});
+
+  const levelsQuantity: number[] = [1, 2, 3, 4];
+  const cardsQuantityArray: number[] = [10, 12, 14, 16];
+  const initalIconsArray: string[] = [
     "music",
     "paw",
     "bell",
@@ -16,8 +23,6 @@ export const useGameStore = defineStore("store", () => {
     "heart",
   ];
 
-  const level = ref(0);
-
   const selectedIconsArray = ref<string[]>([]);
   const duplicateSelectedIconsArray = ref<string[]>([]);
   const randomSelectedIconsArray = ref<string[]>([]);
@@ -25,15 +30,6 @@ export const useGameStore = defineStore("store", () => {
   const setLevel = (index: number): void => {
     level.value = index;
   };
-
-  const isClickable = ref(true);
-  const guessedСards = ref<number[]>([]);
-
-  const firstCard = ref<number | null>(null);
-  const secondCard = ref<number | null>(null);
-
-  const objOpenIcon = ref<{[key: number]: boolean}>({});
-
 
   return {
     playing,
@@ -49,6 +45,6 @@ export const useGameStore = defineStore("store", () => {
     guessedСards,
     firstCard,
     secondCard,
-    objOpenIcon
+    objOpenIcon,
   };
 });

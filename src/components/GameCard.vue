@@ -28,7 +28,7 @@ const props = defineProps<{
   index: number;
 }>();
 
-const showIcon = () => {
+const showIcon = ():void => {
   if (store.guessedСards.includes(props.index) || props.index === store.firstCard) return;
   if (store.isClickable && store.firstCard === null) {
     store.firstCard = props.index;
