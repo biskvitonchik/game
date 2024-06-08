@@ -3,9 +3,10 @@
     <div class="playing-field">
       <section class="cards">
         <GameCard
-          v-for="(card, index) in gameStore.cardsQuantityArray[gameStore.level]"
-          :card="card"
+          v-for="(card, index) in store.cardsQuantityArray[store.level]"
           :key="index"
+          :index="index"
+          :card="card"
         />
       </section>
     </div>
@@ -20,9 +21,11 @@ import GameCard from "@/components/GameCard.vue";
 import Reset from "@/components/Reset.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const gameStore = useGameStore();
+const store = useGameStore();
 const reset = () => {
-  gameStore.playing = false;
+  store.playing = false;
+  store.isCardClickable = true;
+  store.flippedCards = [];
 };
 </script>
 

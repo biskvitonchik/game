@@ -1,17 +1,17 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useGameStore = defineStore("gameStore", () => {
+export const useGameStore = defineStore("store", () => {
   const playing = false;
   const levelsQuantity = [1, 2, 3, 4];
   const cardsQuantityArray = [10, 12, 14, 16];
   const initalIconsArray = [
-    "react",
-    "vuejs",
+    "music",
+    "paw",
     "bell",
     "bolt",
     "sun",
-    "lemon",
+    "lock",
     "snowflake",
     "heart",
   ];
@@ -19,10 +19,15 @@ export const useGameStore = defineStore("gameStore", () => {
   const level = ref(0);
 
   const selectedIconsArray: string[] = [];
+  const duplicateSelectedIconsArray: string[] = [];
+  const randomSelectedIconsArray: string[] = [];
 
   const setLevel = (index: number): void => {
     level.value = index;
   };
+
+  const isCardClickable = ref(true);
+  const flippedCards: string[] = [];
 
   return {
     playing,
@@ -32,5 +37,9 @@ export const useGameStore = defineStore("gameStore", () => {
     level,
     setLevel,
     selectedIconsArray,
+    duplicateSelectedIconsArray,
+    randomSelectedIconsArray,
+    isCardClickable,
+    flippedCards,
   };
 });

@@ -1,16 +1,16 @@
 <template>
   <div class="board">
-    <StartMenu v-show="!gameStore.playing" />
-    <PlayingField v-show="gameStore.playing" />
+    <StartMenu v-show="!store.playing" />
+    <GameBoard v-if="store.playing" />
   </div>
 </template>
 
 <script setup lang="ts">
 import StartMenu from "./StartMenu.vue";
-import PlayingField from "@/components/GameBoard.vue";
+import GameBoard from "@/components/GameBoard.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const gameStore = useGameStore();
+const store = useGameStore();
 </script>
 
 <style scoped lang="scss">
