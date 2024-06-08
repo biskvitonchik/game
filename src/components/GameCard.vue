@@ -39,6 +39,10 @@ const showIcon = () => {
         store.secondCard = null;
         store.isClickable = true;
       }, 1000);
+    } else {
+        store.firstCard = null;
+        store.secondCard = null;
+        store.isClickable = true;
     }
   }
 };
