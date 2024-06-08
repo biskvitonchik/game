@@ -40,9 +40,12 @@ const showIcon = () => {
         store.isClickable = true;
       }, 1000);
     } else {
+        store.guessedСards.push(store.firstCard);
+        store.guessedСards.push(store.secondCard);
         store.firstCard = null;
         store.secondCard = null;
         store.isClickable = true;
+        console.log(store.guessedСards);
     }
   }
 };
@@ -70,5 +73,9 @@ const showIcon = () => {
 .flip {
   transition: 0.5s ease;
   transform: perspective(100px) rotateY(30deg);
+}
+
+.successful {
+  background-color: greenyellow;
 }
 </style>

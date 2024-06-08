@@ -22,10 +22,15 @@ import Reset from "@/components/Reset.vue";
 import { useGameStore } from "@/store/GameStore";
 
 const store = useGameStore();
+
 const reset = () => {
   store.playing = false;
   store.isClickable = true;
-  store.flippedCards = [];
+  store.guessedСards = [];
+  store.objOpenIcon = {};
+  store.firstCard = null;
+  store.secondCard = null;
+
 };
 </script>
 

@@ -27,7 +27,7 @@ export const useGameStore = defineStore("store", () => {
   };
 
   const isClickable = ref(true);
-  const flippedCards = ref<string[]>([]);
+  const guessedСards = ref<number[]>([]);
 
   const firstCard = ref<number | null>(null);
   const secondCard = ref<number | null>(null);
@@ -46,7 +46,7 @@ export const useGameStore = defineStore("store", () => {
     duplicateSelectedIconsArray,
     randomSelectedIconsArray,
     isClickable,
-    flippedCards,
+    guessedСards,
     firstCard,
     secondCard,
     objOpenIcon
