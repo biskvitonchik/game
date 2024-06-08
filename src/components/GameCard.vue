@@ -2,15 +2,21 @@
   <article
     class="game-card"
     @click="showIcon"
-    :class="{ successful: store.guessedСards.includes(props.index) }"
+    :class="{
+      successful: store.guessedСards.includes(props.index),
+      flip: store.objOpenIcon[props.index],
+    }"
   >
-    <i
-      :class="`fa ${
-        store.objOpenIcon[props.index]
-          ? 'fa-' + store.randomSelectedIconsArray[props.index] + ' green'
-          : 'fa-question'
-      }`"
-    ></i>
+    <div class="card-inner">
+      <div class="card-front">
+        <i class="fa fa-question"></i>
+      </div>
+      <div class="card-back">
+        <i
+          :class="`fa fa-${store.randomSelectedIconsArray[props.index]} icon`"
+        ></i>
+      </div>
+    </div>
   </article>
 </template>
 
@@ -61,40 +67,63 @@ const showIcon = () => {
   align-items: center;
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #8e44ad, #407ba3);
-  padding: 10px;
-  border: 2px solid rgb(108, 80, 119);
-  text-align: center;
-  border-radius: 10px;
-  transition: 0.2s ease;
+  perspective: 1000px;
+  cursor: pointer;
 
-  & > i {
-    color: rgb(0, 187, 255);
-    font-size: 55px;
+  &.flip .card-inner {
+    transform: rotateY(180deg);
+  }
 
-    &.green {
-      background-image: linear-gradient(
-        to left,
-        rgb(174, 135, 135),
-        rgb(200, 255, 0)
-      );
-      background-clip: text;
-      color: transparent;
+  .card-inner {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #8e44ad, #407ba3);
+    padding: 10px;
+    border: 2px solid rgb(108, 80, 119);
+    transition: 0.2s ease;
+
+    &:hover {
+      background-color: rgb(93, 48, 156);
+      box-shadow: 0 0 10px 13px rgba(207, 177, 78, 0.1);
+    }
+
+    i {
+      color: rgb(0, 187, 255);
+      font-size: 55px;
+      &.icon {
+        background-image: linear-gradient(
+          to left,
+          rgb(174, 135, 135),
+          rgb(200, 255, 0)
+        );
+        background-clip: text;
+        color: transparent;
+      }
     }
   }
-  &:hover {
-    background-color: rgb(93, 48, 156);
-    box-shadow: 0 0 10px 13px rgba(207, 177, 78, 0.1);
+
+  .card-back {
+    transform: rotateY(180deg);
   }
 
-  &.successful {
+  &.successful .card-front,
+  &.successful .card-back {
     background: linear-gradient(rgb(53, 73, 224), rgb(12, 12, 12));
-    transition: 1s ease;
-
-    &:hover,
-    &.active {
-      transform: none;
-    }
   }
 }
 </style>

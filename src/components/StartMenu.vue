@@ -1,6 +1,6 @@
 <template>
   <div class="start-menu">
-    <h1>Guess</h1>
+    <h1>Find a couple</h1>
     <div class="lvl-btns">
       <LevelButton
         @click="startGame(index)"
