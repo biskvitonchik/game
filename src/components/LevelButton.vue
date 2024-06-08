@@ -19,8 +19,9 @@ const props = defineProps<{
   border: none;
   background: linear-gradient(grey, rgb(135, 103, 73));
   box-shadow: 0 0 10px 5px rgba(1, 1, 1, 0.2);
-  font-size: 24px;
-  color: rgb(78, 212, 48);
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(230, 163, 9);
 
   &:hover {
     background: linear-gradient(rgb(114, 106, 106), rgb(157, 107, 61));

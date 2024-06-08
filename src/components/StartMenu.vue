@@ -1,13 +1,13 @@
 <template>
   <div class="start-menu">
-    <h1>Guess</h1>
+    <h1>Find a couple</h1>
     <div class="lvl-btns">
       <LevelButton
         @click="startGame(index)"
-        v-for="(button, index) in gameStore.levelsQuantity"
+        v-for="(button, index) in store.levelsQuantity"
         :key="index"
         :index="index"
-        :cardsQuantity="gameStore.cardsQuantityArray[index]"
+        :cardsQuantity="store.cardsQuantityArray[index]"
         :button="button"
       />
     </div>
@@ -18,27 +18,32 @@
 import LevelButton from "@/components/LevelButton.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const gameStore = useGameStore();
+const store = useGameStore();
 
 const startGame = (index: number) => {
-  gameStore.setLevel(index);
-  gameStore.playing = true;
+  store.setLevel(index);
+  store.playing = true;
 
-  switch (gameStore.cardsQuantityArray[index]) {
+  switch (store.cardsQuantityArray[index]) {
     case 10:
-      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
+      store.selectedIconsArray = store.initalIconsArray.slice(0, 5);
       break;
     case 12:
-      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
+      store.selectedIconsArray = store.initalIconsArray.slice(0, 6);
       break;
     case 14:
-      gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
+      store.selectedIconsArray = store.initalIconsArray.slice(0, 7);
       break;
     case 16:
-      gameStore.selectedIconsArray = gameStore.initalIconsArray;
+      store.selectedIconsArray = store.initalIconsArray;
       break;
   }
-  console.log(gameStore.selectedIconsArray);
+
+  store.duplicateSelectedIconsArray = store.selectedIconsArray;
+  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray);
+  store.randomSelectedIconsArray = [...store.duplicateSelectedIconsArray].sort(
+    () => 0.5 - Math.random()
+  );
 };
 </script>
 

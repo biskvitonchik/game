@@ -1,16 +1,16 @@
 <template>
   <div class="board">
-    <StartMenu v-show="!gameStore.playing" />
-    <PlayingField v-show="gameStore.playing" />
+    <StartMenu v-show="!store.playing" />
+    <GameBoard v-if="store.playing" />
   </div>
 </template>
 
 <script setup lang="ts">
 import StartMenu from "./StartMenu.vue";
-import PlayingField from "@/components/GameBoard.vue";
+import GameBoard from "@/components/GameBoard.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const gameStore = useGameStore();
+const store = useGameStore();
 </script>
 
 <style scoped lang="scss">
@@ -21,10 +21,10 @@ const gameStore = useGameStore();
   height: 500px;
   background: linear-gradient(
     45deg,
-    rgba(127, 108, 83, 1) 0%,
-    rgba(100, 85, 65, 1) 35%,
+    rgb(146, 137, 125) 0%,
+    rgb(167, 116, 50) 35%,
     rgba(80, 65, 50, 1) 65%,
-    rgba(60, 45, 30, 1) 100%
+    rgb(170, 115, 55) 100%
   );
   border-radius: 30px;
   padding: 5px;

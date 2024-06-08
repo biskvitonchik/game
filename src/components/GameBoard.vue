@@ -3,9 +3,10 @@
     <div class="playing-field">
       <section class="cards">
         <GameCard
-          v-for="(card, index) in gameStore.cardsQuantityArray[gameStore.level]"
-          :card="card"
+          v-for="(card, index) in store.cardsQuantityArray[store.level]"
           :key="index"
+          :index="index"
+          :card="card"
         />
       </section>
     </div>
@@ -20,9 +21,15 @@ import GameCard from "@/components/GameCard.vue";
 import Reset from "@/components/Reset.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const gameStore = useGameStore();
-const reset = () => {
-  gameStore.playing = false;
+const store = useGameStore();
+
+const reset = ():void => {
+  store.playing = false;
+  store.isClickable = true;
+  store.guessedСards = [];
+  store.objOpenIcon = {};
+  store.firstCard = null;
+  store.secondCard = null;
 };
 </script>
 
@@ -32,11 +39,12 @@ const reset = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 </style>
