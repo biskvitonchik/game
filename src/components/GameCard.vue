@@ -1,5 +1,8 @@
 <template>
-  <article class="game-card" @click="showIcon">
+  <article 
+    class="game-card" 
+    @click="showIcon"
+    >
     <i
       :class="`fa ${
         store.objOpenIcon[props.index]
@@ -19,11 +22,13 @@ const props = defineProps<{
 }>();
 
 const showIcon = () => {
+  if (store.guessedСards.includes(props.index) || props.index === store.firstCard) {
+    return;
+  }
+
   if (store.isClickable && store.firstCard === null) {
     store.firstCard = props.index;
     store.objOpenIcon[store.firstCard] = true;
-    console.log(store.firstCard);
-    console.log(store.objOpenIcon);
   } else if (store.isClickable && store.firstCard !== null) {
     store.secondCard = props.index;
     store.objOpenIcon[store.secondCard] = true;
@@ -40,12 +45,12 @@ const showIcon = () => {
         store.isClickable = true;
       }, 1000);
     } else {
-        store.guessedСards.push(store.firstCard);
-        store.guessedСards.push(store.secondCard);
-        store.firstCard = null;
-        store.secondCard = null;
-        store.isClickable = true;
-        console.log(store.guessedСards);
+      store.guessedСards.push(store.firstCard);
+      store.guessedСards.push(store.secondCard);
+      store.firstCard = null;
+      store.secondCard = null;
+      store.isClickable = true;
+      console.log(store.guessedСards);
     }
   }
 };
