@@ -23,13 +23,7 @@ const props = defineProps<{
 }>();
 
 const showIcon = () => {
-  if (
-    store.guessedСards.includes(props.index) ||
-    props.index === store.firstCard
-  ) {
-    return;
-  }
-
+  if (store.guessedСards.includes(props.index) || props.index === store.firstCard) return;
   if (store.isClickable && store.firstCard === null) {
     store.firstCard = props.index;
     store.objOpenIcon[store.firstCard] = true;
@@ -74,26 +68,29 @@ const showIcon = () => {
   border-radius: 10px;
   transition: 0.2s ease;
 
-
   & > i {
     color: rgb(0, 187, 255);
     font-size: 55px;
 
     &.green {
-      background-image: linear-gradient(to left, rgb(174, 135, 135), rgb(200, 255, 0));
-  background-clip: text;
-  color: transparent;    }
+      background-image: linear-gradient(
+        to left,
+        rgb(174, 135, 135),
+        rgb(200, 255, 0)
+      );
+      background-clip: text;
+      color: transparent;
+    }
   }
   &:hover {
     background-color: rgb(93, 48, 156);
     box-shadow: 0 0 10px 13px rgba(207, 177, 78, 0.1);
-
   }
 
   &.successful {
     background: linear-gradient(rgb(53, 73, 224), rgb(12, 12, 12));
     transition: 1s ease;
-    
+
     &:hover,
     &.active {
       transform: none;

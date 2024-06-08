@@ -30,7 +30,6 @@ const reset = () => {
   store.objOpenIcon = {};
   store.firstCard = null;
   store.secondCard = null;
-
 };
 </script>
 
@@ -40,7 +39,7 @@ const reset = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .cards {
