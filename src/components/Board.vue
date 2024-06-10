@@ -21,7 +21,7 @@ const store = useGameStore();
   display: flex;
   justify-content: center;
   width: 900px;
-  height: 500px;
+  height: 550px;
   background: linear-gradient(
     45deg,
     rgb(146, 137, 125) 0%,
@@ -33,5 +33,12 @@ const store = useGameStore();
   padding: 5px;
   box-shadow: 0 0 30px 20px rgba(50, 47, 47, 0.3);
   z-index: 1;
+
+  @media (max-width: 600px) {
+    width: 95%;
+    height: 65vh;
+    padding: 10px;
+    border-radius: 20px;
+  }
 }
 </style>
