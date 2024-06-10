@@ -39,9 +39,8 @@ const startGame = (index: number) => {
       break;
   }
 
-  store.duplicateSelectedIconsArray = store.selectedIconsArray;
-  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray);
-  store.randomSelectedIconsArray = [...store.duplicateSelectedIconsArray].sort(() => 0.5 - Math.random());
+  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray, ...store.selectedIconsArray);
+  store.randomSelectedIconsArray.push(...store.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random()));
 };
 </script>
 

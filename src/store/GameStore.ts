@@ -31,7 +31,6 @@ export const useGameStore = defineStore("store", () => {
   const setLevel = (index: number): void => {
     level.value = index;
   };
-
   return {
     playing,
     levelsQuantity,

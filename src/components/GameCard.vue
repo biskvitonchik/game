@@ -44,7 +44,7 @@ const showIcon = (): void => {
         store.firstCard = null;
         store.secondCard = null;
         store.isClickable = true;
-      }, 1000);
+      }, 800);
     } else {
       store.guessedСards.push(store.firstCard);
       store.guessedСards.push(store.secondCard);
