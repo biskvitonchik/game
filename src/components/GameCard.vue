@@ -28,8 +28,12 @@ const props = defineProps<{
   index: number;
 }>();
 
-const showIcon = ():void => {
-  if (store.guessedСards.includes(props.index) || props.index === store.firstCard) return;
+const showIcon = (): void => {
+  if (
+    store.guessedСards.includes(props.index) ||
+    props.index === store.firstCard
+  )
+    return;
   if (store.isClickable && store.firstCard === null) {
     store.firstCard = props.index;
     store.objOpenIcon[store.firstCard] = true;

@@ -47,7 +47,13 @@ const startGame = (index: number) => {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+@import '../assets/styles/scss/style.scss';
+
+* {
+ @include font-gluten;
+}
+
 .start-menu {
   display: flex;
   flex-direction: column;
@@ -61,5 +67,10 @@ const startGame = (index: number) => {
   flex-direction: column;
   margin-top: 50px;
   gap: 10px;
+}
+
+h1 {
+  font-size: 40px;
+  color: rgb(91, 220, 243);
 }
 </style>

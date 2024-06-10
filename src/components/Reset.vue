@@ -3,9 +3,11 @@
 </template>
 
 <style scoped lang="scss">
+@import '../assets/styles/scss/style.scss';
+
 .btn-reset {
   width: 140px;
-  font-size: 18px;
+  font-size: 22px;
   padding: 10px;
   background: linear-gradient(
     45deg,
@@ -14,6 +16,8 @@
     rgba(80, 65, 50, 1) 65%,
     rgb(45, 43, 43) 100%
   );
+  @include font-gluten;
+  
   border-radius: 10px;
   border: none;
   box-shadow: 0 3px 20px 5px rgba(4, 37, 74, 0.2);
