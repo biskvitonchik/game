@@ -48,10 +48,10 @@ const startGame = (index: number) => {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/styles/scss/style.scss';
+@import "../assets/styles/scss/style.scss";
 
 * {
- @include font-gluten;
+  @include font-gluten;
 }
 
 .start-menu {

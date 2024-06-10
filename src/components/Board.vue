@@ -3,11 +3,13 @@
     <StartMenu v-show="!store.playing" />
     <GameBoard v-if="store.playing" />
   </div>
+  <Confetti v-if="store.isCompletedLevel" />
 </template>
 
 <script setup lang="ts">
-import StartMenu from "./StartMenu.vue";
+import StartMenu from "@/components/StartMenu.vue";
 import GameBoard from "@/components/GameBoard.vue";
+import Confetti from "@/components/Confetti.vue";
 import { useGameStore } from "@/store/GameStore";
 
 const store = useGameStore();
@@ -15,6 +17,7 @@ const store = useGameStore();
 
 <style scoped lang="scss">
 .board {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 900px;
@@ -29,5 +32,6 @@ const store = useGameStore();
   border-radius: 30px;
   padding: 5px;
   box-shadow: 0 0 30px 20px rgba(50, 47, 47, 0.3);
+  z-index: 1;
 }
 </style>

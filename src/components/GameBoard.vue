@@ -23,13 +23,14 @@ import { useGameStore } from "@/store/GameStore";
 
 const store = useGameStore();
 
-const reset = ():void => {
+const reset = (): void => {
   store.playing = false;
   store.isClickable = true;
   store.guessedСards = [];
   store.objOpenIcon = {};
   store.firstCard = null;
   store.secondCard = null;
+  store.isCompletedLevel = false;
 };
 </script>
 
