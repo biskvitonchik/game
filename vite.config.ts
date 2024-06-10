@@ -10,5 +10,5 @@ export default defineConfig({
       "@": resolve(__dirname, "src")
     }
   },
-  base: 'game'
+  base: '/game'
 })

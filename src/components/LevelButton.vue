@@ -1,6 +1,6 @@
 <template>
   <button class="btn-level">
-    {{ props.cardsQuantity }}
+    {{ props.cardsQuantity }} card
   </button>
 </template>
 
@@ -12,7 +12,6 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .btn-level {
-  padding: 15px;
   width: 180px;
   height: 60px;
   border-radius: 10px;
@@ -21,7 +20,7 @@ const props = defineProps<{
   box-shadow: 0 0 10px 5px rgba(1, 1, 1, 0.2);
   font-size: 30px;
   font-weight: 600;
-  color: rgb(230, 163, 9);
+  color: rgb(91, 220, 243);
 
   &:hover {
     background: linear-gradient(rgb(114, 106, 106), rgb(157, 107, 61));
