@@ -26,11 +26,13 @@ const store = useGameStore();
 const reset = (): void => {
   store.playing = false;
   store.isClickable = true;
-  store.guessedСards = [];
+  store.guessedСards.length = 0;
   store.objOpenIcon = {};
   store.firstCard = null;
   store.secondCard = null;
   store.isCompletedLevel = false;
+  store.duplicateSelectedIconsArray.length = 0;
+  store.randomSelectedIconsArray.length = 0;
 };
 </script>
 

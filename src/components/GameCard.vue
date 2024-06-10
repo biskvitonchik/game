@@ -44,7 +44,7 @@ const showIcon = (): void => {
         store.firstCard = null;
         store.secondCard = null;
         store.isClickable = true;
-      }, 1000);
+      }, 800);
     } else {
       store.guessedСards.push(store.firstCard);
       store.guessedСards.push(store.secondCard);
@@ -69,6 +69,11 @@ const showIcon = (): void => {
   perspective: 1000px;
   cursor: pointer;
 
+  @media (max-width: 600px) {
+    width: 85px;
+    height: 85px;
+  }
+
   &.flip .card-inner {
     transform: rotateY(180deg);
   }
@@ -79,6 +84,11 @@ const showIcon = (): void => {
     height: 100px;
     transition: transform 0.7s;
     transform-style: preserve-3d;
+
+    @media (max-width: 600px) {
+      width: 85px;
+      height: 85px;
+    }
   }
 
   .card-front,
@@ -96,6 +106,12 @@ const showIcon = (): void => {
     border: 2px solid rgb(108, 80, 119);
     transition: 0.2s ease;
 
+    @media (max-width: 600px) {
+      width: 85px;
+      height: 85px;
+      padding: 5px;
+    }
+
     &:hover {
       background-color: rgb(93, 48, 156);
       box-shadow: 0 0 10px 13px rgba(207, 177, 78, 0.1);
@@ -112,6 +128,10 @@ const showIcon = (): void => {
         );
         background-clip: text;
         color: transparent;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 50px;
       }
     }
   }

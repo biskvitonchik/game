@@ -39,11 +39,8 @@ const startGame = (index: number) => {
       break;
   }
 
-  store.duplicateSelectedIconsArray = store.selectedIconsArray;
-  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray);
-  store.randomSelectedIconsArray = [...store.duplicateSelectedIconsArray].sort(
-    () => 0.5 - Math.random()
-  );
+  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray, ...store.selectedIconsArray);
+  store.randomSelectedIconsArray.push(...store.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random()));
 };
 </script>
 
@@ -65,7 +62,7 @@ const startGame = (index: number) => {
 .lvl-btns {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 75px;
   gap: 10px;
 }
 
