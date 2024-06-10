@@ -1,7 +1,5 @@
 <template>
-  <button class="btn-level">
-    {{ props.cardsQuantity }} card
-  </button>
+  <button class="btn-level">{{ props.cardsQuantity }} card</button>
 </template>
 
 <script setup lang="ts">

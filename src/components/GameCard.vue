@@ -29,22 +29,15 @@ const props = defineProps<{
 }>();
 
 const showIcon = (): void => {
-  if (
-    store.guessedСards.includes(props.index) ||
-    props.index === store.firstCard
-  )
-    return;
+  if (store.guessedСards.includes(props.index) || props.index === store.firstCard) return;
   if (store.isClickable && store.firstCard === null) {
     store.firstCard = props.index;
-    store.objOpenIcon[store.firstCard] = true;
+    store.objOpenIcon[store.firstCard] = true;    
   } else if (store.isClickable && store.firstCard !== null) {
     store.secondCard = props.index;
     store.objOpenIcon[store.secondCard] = true;
     store.isClickable = false;
-    if (
-      store.randomSelectedIconsArray[store.firstCard!] !==
-      store.randomSelectedIconsArray[store.secondCard!]
-    ) {
+    if (store.randomSelectedIconsArray[store.firstCard!] !== store.randomSelectedIconsArray[store.secondCard!]) {
       setTimeout(() => {
         store.objOpenIcon[store.firstCard!] = false;
         store.objOpenIcon[store.secondCard!] = false;
@@ -58,7 +51,9 @@ const showIcon = (): void => {
       store.firstCard = null;
       store.secondCard = null;
       store.isClickable = true;
-      console.log(store.guessedСards);
+        if (store.randomSelectedIconsArray.length === store.guessedСards.length){
+          store.isCompletedLevel = true;
+        }
     }
   }
 };
@@ -130,4 +125,5 @@ const showIcon = (): void => {
     background: linear-gradient(rgb(53, 73, 224), rgb(12, 12, 12));
   }
 }
+
 </style>
