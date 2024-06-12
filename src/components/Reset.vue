@@ -4,6 +4,7 @@
 
 <style scoped lang="scss">
 @import '../assets/styles/scss/style.scss';
+
 * {
   @include font-gluten;
 }
