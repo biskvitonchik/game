@@ -1,17 +1,25 @@
 <template>
-  <div class="start-menu">
-    <h1>Find a couple</h1>
-    <div class="lvl-btns">
-      <LevelButton
-        @click="startGame(index)"
-        v-for="(button, index) in store.levelsQuantity"
-        :key="index"
-        :index="index"
-        :cardsQuantity="store.cardsQuantityArray[index]"
-        :button="button"
-      />
-    </div>
-  </div>
+  <main class="start-menu">
+    <header>
+      <h1>Find a couple</h1>
+    </header>
+    <section class="lvl-choice">
+      <h2>Select the number of cards</h2>
+      <nav class="lvl-btns">
+        <ul>
+          <li v-for="(button, index) in store.levelsQuantity">
+            <LevelButton
+              @click="startGame(index)"
+              :key="index"
+              :index="index"
+              :cardsQuantity="store.cardsQuantityArray[index]"
+              :button="button"
+            />
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -59,15 +67,28 @@ const startGame = (index: number) => {
   gap: 10px;
 }
 
-.lvl-btns {
+nav.lvl-btns {
   display: flex;
   flex-direction: column;
-  margin-top: 75px;
-  gap: 10px;
+  margin-top: 10px;
 }
 
 h1 {
   font-size: 40px;
   color: rgb(91, 220, 243);
+}
+
+.lvl-choice {
+  text-align: center;
+
+  h2 {
+    font-size: 20px;
+    color: rgb(121, 146, 150);
+    margin-top: 50px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
 }
 </style>
