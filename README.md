@@ -1,9 +1,82 @@
-# Vue 3 + TypeScript + Vite
+# Игра "Найди пару"
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Описание проекта
+"Найди пару" — это игра на Vue 3, где игроку нужно найти пары одинаковых карточек. Игра разработана с использованием Composition API, TypeScript, SCSS и Pinia.
 
-## Recommended Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+## Правила игры
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+1. Выберите количество карточек, с которыми вы хотите играть (10, 12, 14 или 16).
+2. Нажмите на карточку, чтобы открыть ее и увидеть иконку.
+3. Нажмите на другую карточку, чтобы попытаться найти пару.
+4. Если иконки не совпадают, карточки будут перевернуты обратно.
+5. Постарайтесь найти все пары, чтобы завершить уровень.
+
+## Установка и запуск проекта
+
+1. Убедитесь, что у вас установлен Node.js и Yarn.
+
+
+2. Клонируйте рапозиторий: 
+`git clone https://github.com/biskvitonchik/game.git` 
+3. Перейдите в дерикторию проекта: 
+   `cd game`
+4. Установите зависимости:
+`yarn install`
+5. Запустите проект:
+`yarn dev`
+
+## Структура проекта
+
+src/
+├── assets/
+│   └── styles/
+│       └── scss/
+│           ├── fonts.scss
+│           └── style.scss
+├── components/
+│   ├── Board.vue
+│   ├── Confetti.vue
+│   ├── GameBoard.vue
+│   ├── GameCard.vue
+│   ├── LevelButton.vue
+│   ├── Reset.vue
+│   └── StartMenu.vue
+├── App.vue
+├── main.ts
+└── store/
+    └── GameStore.ts
+
+- __Board.vue__
+Главный компонент, который отображает стартовое меню, игровую доску и конфетти по завершении уровня.
+
+- __Confetti.vue__
+Компонент, создающий анимацию конфетти, когда уровень завершен.
+
+- __GameBoard.vue__
+Компонент, представляющий игровое поле, содержащий игровую логику и взаимодействие.
+
+- __GameCard.vue__
+Компонент отдельной карты, включающий логику переворачивания карт и сравнения.
+
+- __LevelButton.vue__
+Кнопка для выбора уровня игры.
+
+- __Reset.vue__
+Кнопка для сброса игры и возврата к стартовому меню.
+
+- __StartMenu.vue__
+Стартовое меню, позволяющее выбрать количество карт для игры.
+
+- __GameStore.ts__
+Находятся переменные и методы, необходимые для функционирования игры.
+
+
+## Использованные технологии
+
+- Vue 3 (Composition API, script setup)
+- TypeScript
+- SCSS
+- Pinia (для управления состоянием)
+- Yarn (для управления зависимостями)
+- Vite (для сборки проекта)
