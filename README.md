@@ -25,6 +25,9 @@
 src/
 ├── assets/
 │   └── styles/
+│       ├── css/
+│       │   ├── fonts.css
+│       │   └── style.css
 │       └── scss/
 │           ├── fonts.scss
 │           └── style.scss
