@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useGameStore = defineStore("store", () => {
+export const useGameStore = defineStore("gameStore", () => {
   const playing = ref<boolean>(false);
   const level = ref<number>(0);
   const isClickable = ref<boolean>(true);

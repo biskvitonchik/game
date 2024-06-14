@@ -5,7 +5,6 @@
   </template>
   
   <script setup lang="ts">
-  
   const randomLeft = () => `${Math.random() * 100}%`;
   const randomDelay = () => `${Math.random() * 4}s`;
   </script>

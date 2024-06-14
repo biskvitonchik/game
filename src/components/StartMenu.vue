@@ -7,12 +7,12 @@
       <h2>Select the number of cards</h2>
       <nav class="lvl-btns">
         <ul>
-          <li v-for="(button, index) in store.levelsQuantity">
+          <li v-for="(button, index) in gameStore.levelsQuantity">
             <LevelButton
               @click="startGame(index)"
               :key="index"
               :index="index"
-              :cardsQuantity="store.cardsQuantityArray[index]"
+              :cardsQuantity="gameStore.cardsQuantityArray[index]"
               :button="button"
             />
           </li>
@@ -26,29 +26,29 @@
 import LevelButton from "@/components/LevelButton.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const store = useGameStore();
+const gameStore = useGameStore();
 
 const startGame = (index: number) => {
-  store.setLevel(index);
-  store.playing = true;
+  gameStore.setLevel(index);
+  gameStore.playing = true;
 
-  switch (store.cardsQuantityArray[index]) {
+  switch (gameStore.cardsQuantityArray[index]) {
     case 10:
-      store.selectedIconsArray = store.initalIconsArray.slice(0, 5);
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
       break;
     case 12:
-      store.selectedIconsArray = store.initalIconsArray.slice(0, 6);
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
       break;
     case 14:
-      store.selectedIconsArray = store.initalIconsArray.slice(0, 7);
+    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
       break;
     case 16:
-      store.selectedIconsArray = store.initalIconsArray;
+    gameStore.selectedIconsArray = gameStore.initalIconsArray;
       break;
   }
 
-  store.duplicateSelectedIconsArray.push(...store.selectedIconsArray, ...store.selectedIconsArray);
-  store.randomSelectedIconsArray.push(...store.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random()));
+  gameStore.duplicateSelectedIconsArray.push(...gameStore.selectedIconsArray, ...gameStore.selectedIconsArray);
+  gameStore.randomSelectedIconsArray.push(...gameStore.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random()));
 };
 </script>
 

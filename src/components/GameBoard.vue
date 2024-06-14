@@ -3,7 +3,7 @@
     <div class="playing-field">
       <section class="cards">
         <GameCard
-          v-for="(card, index) in store.cardsQuantityArray[store.level]"
+          v-for="(card, index) in gameStore.cardsQuantityArray[gameStore.level]"
           :key="index"
           :index="index"
           :card="card"
@@ -21,18 +21,18 @@ import GameCard from "@/components/GameCard.vue";
 import Reset from "@/components/Reset.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const store = useGameStore();
+const gameStore = useGameStore();
 
 const reset = (): void => {
-  store.playing = false;
-  store.isClickable = true;
-  store.guessedСards.length = 0;
-  store.objOpenIcon = {};
-  store.firstCard = null;
-  store.secondCard = null;
-  store.isCompletedLevel = false;
-  store.duplicateSelectedIconsArray.length = 0;
-  store.randomSelectedIconsArray.length = 0;
+  gameStore.playing = false;
+  gameStore.isClickable = true;
+  gameStore.guessedСards.length = 0;
+  gameStore.objOpenIcon = {};
+  gameStore.firstCard = null;
+  gameStore.secondCard = null;
+  gameStore.isCompletedLevel = false;
+  gameStore.duplicateSelectedIconsArray.length = 0;
+  gameStore.randomSelectedIconsArray.length = 0;
 };
 </script>
 
