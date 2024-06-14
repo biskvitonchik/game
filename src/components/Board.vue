@@ -1,9 +1,9 @@
 <template>
   <div class="board">
-    <StartMenu v-show="!store.playing" />
-    <GameBoard v-if="store.playing" />
+    <StartMenu v-show="!gameStore.playing" />
+    <GameBoard v-if="gameStore.playing" />
   </div>
-  <Confetti v-if="store.isCompletedLevel" />
+  <Confetti v-if="gameStore.isCompletedLevel" />
 </template>
 
 <script setup lang="ts">
@@ -12,7 +12,7 @@ import GameBoard from "@/components/GameBoard.vue";
 import Confetti from "@/components/Confetti.vue";
 import { useGameStore } from "@/store/GameStore";
 
-const store = useGameStore();
+const gameStore = useGameStore();
 </script>
 
 <style scoped lang="scss">

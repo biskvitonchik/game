@@ -3,8 +3,8 @@
     class="game-card"
     @click="showIcon"
     :class="{
-      successful: store.guessedСards.includes(props.index),
-      flip: store.objOpenIcon[props.index],
+      successful: gameStore.guessedСards.includes(props.index),
+      flip: gameStore.objOpenIcon[props.index],
     }"
   >
     <div class="card-inner">
@@ -13,7 +13,7 @@
       </div>
       <div class="card-back">
         <i
-          :class="`fa fa-${store.randomSelectedIconsArray[props.index]} icon`"
+          :class="`fa fa-${gameStore.randomSelectedIconsArray[props.index]} icon`"
         ></i>
       </div>
     </div>
@@ -22,37 +22,37 @@
 
 <script setup lang="ts">
 import { useGameStore } from "@/store/GameStore";
-const store = useGameStore();
+const gameStore = useGameStore();
 
 const props = defineProps<{
   index: number;
 }>();
 
 const showIcon = (): void => {
-  if (store.guessedСards.includes(props.index) || props.index === store.firstCard) return;
-  if (store.isClickable && store.firstCard === null) {
-    store.firstCard = props.index;
-    store.objOpenIcon[store.firstCard] = true;    
-  } else if (store.isClickable && store.firstCard !== null) {
-    store.secondCard = props.index;
-    store.objOpenIcon[store.secondCard] = true;
-    store.isClickable = false;
-    if (store.randomSelectedIconsArray[store.firstCard!] !== store.randomSelectedIconsArray[store.secondCard!]) {
+  if (gameStore.guessedСards.includes(props.index) || props.index === gameStore.firstCard) return;
+  if (gameStore.isClickable && gameStore.firstCard === null) {
+    gameStore.firstCard = props.index;
+    gameStore.objOpenIcon[gameStore.firstCard] = true;    
+  } else if (gameStore.isClickable && gameStore.firstCard !== null) {
+    gameStore.secondCard = props.index;
+    gameStore.objOpenIcon[gameStore.secondCard] = true;
+    gameStore.isClickable = false;
+    if (gameStore.randomSelectedIconsArray[gameStore.firstCard!] !== gameStore.randomSelectedIconsArray[gameStore.secondCard!]) {
       setTimeout(() => {
-        store.objOpenIcon[store.firstCard!] = false;
-        store.objOpenIcon[store.secondCard!] = false;
-        store.firstCard = null;
-        store.secondCard = null;
-        store.isClickable = true;
+        gameStore.objOpenIcon[gameStore.firstCard!] = false;
+        gameStore.objOpenIcon[gameStore.secondCard!] = false;
+        gameStore.firstCard = null;
+        gameStore.secondCard = null;
+        gameStore.isClickable = true;
       }, 800);
     } else {
-      store.guessedСards.push(store.firstCard);
-      store.guessedСards.push(store.secondCard);
-      store.firstCard = null;
-      store.secondCard = null;
-      store.isClickable = true;
-        if (store.randomSelectedIconsArray.length === store.guessedСards.length){
-          store.isCompletedLevel = true;
+      gameStore.guessedСards.push(gameStore.firstCard);
+      gameStore.guessedСards.push(gameStore.secondCard);
+      gameStore.firstCard = null;
+      gameStore.secondCard = null;
+      gameStore.isClickable = true;
+        if (gameStore.randomSelectedIconsArray.length === gameStore.guessedСards.length){
+          gameStore.isCompletedLevel = true;
         }
     }
   }
