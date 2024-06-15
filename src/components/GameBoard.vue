@@ -11,7 +11,7 @@
       </section>
     </div>
     <div class="btn-reset">
-      <Reset @click="reset" />
+      <Reset />
     </div>
   </div>
 </template>
@@ -22,18 +22,6 @@ import Reset from "@/components/Reset.vue";
 import { useGameStore } from "@/store/GameStore";
 
 const gameStore = useGameStore();
-
-const reset = (): void => {
-  gameStore.playing = false;
-  gameStore.isClickable = true;
-  gameStore.guessedСards.length = 0;
-  gameStore.objOpenIcon = {};
-  gameStore.firstCard = null;
-  gameStore.secondCard = null;
-  gameStore.isCompletedLevel = false;
-  gameStore.duplicateSelectedIconsArray.length = 0;
-  gameStore.randomSelectedIconsArray.length = 0;
-};
 </script>
 
 <style scoped lang="scss">
