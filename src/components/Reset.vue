@@ -1,9 +1,27 @@
 <template>
-  <button class="btn-reset">reset</button>
+  <button class="btn-reset" @click="reset">reset</button>
 </template>
 
+<script setup lang="ts">
+import { useGameStore } from "@/store/GameStore";
+
+const gameStore = useGameStore();
+
+const reset = (): void => {
+  gameStore.playing = false;
+  gameStore.isClickable = true;
+  gameStore.guessedСards.length = 0;
+  gameStore.objOpenIcon = {};
+  gameStore.firstCard = null;
+  gameStore.secondCard = null;
+  gameStore.isCompletedLevel = false;
+  gameStore.duplicateSelectedIconsArray.length = 0;
+  gameStore.randomSelectedIconsArray.length = 0;
+};
+</script>
+
 <style scoped lang="scss">
-@import '../assets/styles/scss/style.scss';
+@import "../assets/styles/scss/style.scss";
 
 * {
   @include font-gluten;
