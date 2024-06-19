@@ -5,10 +5,10 @@ export const useGameStore = defineStore("gameStore", () => {
   const playing = ref<boolean>(false);
   const level = ref<number>(0);
   const isClickable = ref<boolean>(true);
-  const guessedСards = ref<number[]>([]);
+  const guessedCards = ref<number[]>([]);
   const firstCard = ref<number | null>(null);
   const secondCard = ref<number | null>(null);
-  const objOpenIcon = ref<{ [key: number]: boolean }>({});
+  const openedCards = ref<{ [key: number]: boolean }>({});
   const isCompletedLevel = ref<boolean>(false);
 
   const levelsQuantity: number[] = [1, 2, 3, 4];
@@ -28,24 +28,20 @@ export const useGameStore = defineStore("gameStore", () => {
   const duplicateSelectedIconsArray = ref<string[]>([]);
   const randomSelectedIconsArray = ref<string[]>([]);
 
-  const setLevel = (index: number): void => {
-    level.value = index;
-  };
   return {
     playing,
     levelsQuantity,
     cardsQuantityArray,
     initalIconsArray,
     level,
-    setLevel,
     selectedIconsArray,
     duplicateSelectedIconsArray,
     randomSelectedIconsArray,
     isClickable,
-    guessedСards,
+    guessedCards,
     firstCard,
     secondCard,
-    objOpenIcon,
+    openedCards,
     isCompletedLevel,
   };
 });

@@ -25,36 +25,13 @@
 <script setup lang="ts">
 import LevelButton from "@/components/LevelButton.vue";
 import { useGameStore } from "@/store/GameStore";
+import { startGame } from "@/gameLogic";
 
 const gameStore = useGameStore();
-
-const startGame = (index: number) => {
-  gameStore.setLevel(index);
-  gameStore.playing = true;
-
-  switch (gameStore.cardsQuantityArray[index]) {
-    case 10:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 5);
-      break;
-    case 12:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 6);
-      break;
-    case 14:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray.slice(0, 7);
-      break;
-    case 16:
-    gameStore.selectedIconsArray = gameStore.initalIconsArray;
-      break;
-  }
-
-  gameStore.duplicateSelectedIconsArray.push(...gameStore.selectedIconsArray, ...gameStore.selectedIconsArray);
-  gameStore.randomSelectedIconsArray.push(...gameStore.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random()));
-};
 </script>
 
 <style scoped lang="scss">
 @import "../assets/styles/scss/style.scss";
-
 * {
   @include font-gluten;
 }
