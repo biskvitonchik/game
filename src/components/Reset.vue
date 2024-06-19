@@ -3,26 +3,11 @@
 </template>
 
 <script setup lang="ts">
-import { useGameStore } from "@/store/GameStore";
-
-const gameStore = useGameStore();
-
-const reset = (): void => {
-  gameStore.playing = false;
-  gameStore.isClickable = true;
-  gameStore.guessedСards.length = 0;
-  gameStore.objOpenIcon = {};
-  gameStore.firstCard = null;
-  gameStore.secondCard = null;
-  gameStore.isCompletedLevel = false;
-  gameStore.duplicateSelectedIconsArray.length = 0;
-  gameStore.randomSelectedIconsArray.length = 0;
-};
+import { reset } from "@/gameLogic";
 </script>
 
 <style scoped lang="scss">
 @import "../assets/styles/scss/style.scss";
-
 * {
   @include font-gluten;
 }

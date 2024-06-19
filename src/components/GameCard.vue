@@ -1,10 +1,10 @@
 <template>
   <article
     class="game-card"
-    @click="showIcon"
+    @click="handleClick"
     :class="{
-      successful: gameStore.guessedСards.includes(props.index),
-      flip: gameStore.objOpenIcon[props.index],
+      successful: gameStore.guessedCards.includes(props.index),
+      flip: gameStore.openedCards[props.index],
     }"
   >
     <div class="card-inner">
@@ -12,8 +12,7 @@
         <i class="fa fa-question"></i>
       </div>
       <div class="card-back">
-        <i
-          :class="`fa fa-${gameStore.randomSelectedIconsArray[props.index]} icon`"
+        <i :class="`fa fa-${gameStore.randomSelectedIconsArray[props.index]} icon`"
         ></i>
       </div>
     </div>
@@ -22,40 +21,16 @@
 
 <script setup lang="ts">
 import { useGameStore } from "@/store/GameStore";
+import { showIcon } from "@/gameLogic.ts";
+
 const gameStore = useGameStore();
 
 const props = defineProps<{
   index: number;
 }>();
 
-const showIcon = (): void => {
-  if (gameStore.guessedСards.includes(props.index) || props.index === gameStore.firstCard) return;
-  if (gameStore.isClickable && gameStore.firstCard === null) {
-    gameStore.firstCard = props.index;
-    gameStore.objOpenIcon[gameStore.firstCard] = true;    
-  } else if (gameStore.isClickable && gameStore.firstCard !== null) {
-    gameStore.secondCard = props.index;
-    gameStore.objOpenIcon[gameStore.secondCard] = true;
-    gameStore.isClickable = false;
-    if (gameStore.randomSelectedIconsArray[gameStore.firstCard!] !== gameStore.randomSelectedIconsArray[gameStore.secondCard!]) {
-      setTimeout(() => {
-        gameStore.objOpenIcon[gameStore.firstCard!] = false;
-        gameStore.objOpenIcon[gameStore.secondCard!] = false;
-        gameStore.firstCard = null;
-        gameStore.secondCard = null;
-        gameStore.isClickable = true;
-      }, 800);
-    } else {
-      gameStore.guessedСards.push(gameStore.firstCard);
-      gameStore.guessedСards.push(gameStore.secondCard);
-      gameStore.firstCard = null;
-      gameStore.secondCard = null;
-      gameStore.isClickable = true;
-        if (gameStore.randomSelectedIconsArray.length === gameStore.guessedСards.length){
-          gameStore.isCompletedLevel = true;
-        }
-    }
-  }
+const handleClick = (): void => {
+  showIcon(props.index);
 };
 </script>
 
@@ -145,5 +120,4 @@ const showIcon = (): void => {
     background: linear-gradient(rgb(53, 73, 224), rgb(12, 12, 12));
   }
 }
-
 </style>
