@@ -3,8 +3,8 @@
     class="game-card"
     @click="handleClick"
     :class="{
-      successful: gameStore.guessedCards.includes(props.index),
-      flip: gameStore.openedCards[props.index],
+      successful: gameStore.guessedCards.includes(props.card.id),
+      flip: gameStore.openedCards[props.card.id],
     }"
   >
     <div class="card-inner">
@@ -12,8 +12,7 @@
         <i class="fa fa-question"></i>
       </div>
       <div class="card-back">
-        <i :class="`fa fa-${gameStore.randomSelectedIconsArray[props.index]} icon`"
-        ></i>
+        <i :class="`fa fa-${props.card.value} icon`"></i>
       </div>
     </div>
   </article>
@@ -26,11 +25,11 @@ import { showIcon } from "@/gameLogic.ts";
 const gameStore = useGameStore();
 
 const props = defineProps<{
-  index: number;
+  card: { id: string; value: string };
 }>();
 
 const handleClick = (): void => {
-  showIcon(props.index);
+  showIcon(props.card.id);
 };
 </script>
 
