@@ -3,9 +3,8 @@
     <div class="playing-field">
       <section class="cards">
         <GameCard
-          v-for="(card, index) in gameStore.cardsQuantityArray[gameStore.level]"
-          :key="index"
-          :index="index"
+          v-for="card in gameStore.randomSelectedIconsArray"
+          :key="card.id"
           :card="card"
         />
       </section>

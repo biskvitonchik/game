@@ -1,26 +1,25 @@
+import { v4 as uuidv4 } from "uuid";
 import { useGameStore } from "@/store/GameStore";
 
-export const setLevel = (index: number): void => {
+export const showIcon = (cardId: string): void => {
   const gameStore = useGameStore();
-  gameStore.level = index;
-};
 
-export const showIcon = (cardIndex: number): void => {
-  const gameStore = useGameStore();
-  if (gameStore.guessedCards.includes(cardIndex) || cardIndex === gameStore.firstCard)
+  if (gameStore.guessedCards.includes(cardId) || cardId === gameStore.firstCard) {
     return;
+  }
 
   if (gameStore.isClickable && gameStore.firstCard === null) {
-    gameStore.firstCard = cardIndex;
+    gameStore.firstCard = cardId;
     gameStore.openedCards[gameStore.firstCard] = true;
   } else if (gameStore.isClickable && gameStore.firstCard !== null) {
-    gameStore.secondCard = cardIndex;
+    gameStore.secondCard = cardId;
     gameStore.openedCards[gameStore.secondCard] = true;
     gameStore.isClickable = false;
-    if (
-      gameStore.randomSelectedIconsArray[gameStore.firstCard!] !==
-      gameStore.randomSelectedIconsArray[gameStore.secondCard!]
-    ) {
+
+    const firstCardValue = gameStore.randomSelectedIconsArray.find(card => card.id === gameStore.firstCard)?.value;
+    const secondCardValue = gameStore.randomSelectedIconsArray.find(card => card.id === gameStore.secondCard)?.value;
+
+    if (firstCardValue !== secondCardValue) {
       setTimeout(() => {
         gameStore.openedCards[gameStore.firstCard!] = false;
         gameStore.openedCards[gameStore.secondCard!] = false;
@@ -34,17 +33,14 @@ export const showIcon = (cardIndex: number): void => {
       gameStore.firstCard = null;
       gameStore.secondCard = null;
       gameStore.isClickable = true;
-      if (
-        gameStore.randomSelectedIconsArray.length ===
-        gameStore.guessedCards.length
-      ) {
+      if (gameStore.randomSelectedIconsArray.length === gameStore.guessedCards.length) {
         gameStore.isCompletedLevel = true;
       }
     }
   }
 };
 
-export const startGame = (index: number) => {
+export const startGame = (index: number): void => {
   const gameStore = useGameStore();
   setLevel(index);
   gameStore.playing = true;
@@ -68,9 +64,17 @@ export const startGame = (index: number) => {
     ...gameStore.selectedIconsArray,
     ...gameStore.selectedIconsArray
   );
+
   gameStore.randomSelectedIconsArray.push(
-    ...gameStore.duplicateSelectedIconsArray.sort(() => 0.5 - Math.random())
+    ...gameStore.duplicateSelectedIconsArray
+      .sort(() => 0.5 - Math.random())
+      .map((icon) => ({ id: uuidv4(), value: icon }))
   );
+};
+
+export const setLevel = (index: number): void => {
+  const gameStore = useGameStore();
+  gameStore.level = index;
 };
 
 export const reset = (): void => {
