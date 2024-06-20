@@ -2,6 +2,9 @@
   <article
     class="game-card"
     @click="handleClick"
+    @keydown.enter="handleClick"
+    tabindex="0"
+    role="button"
     :class="{
       successful: gameStore.guessedCards.includes(props.card.id),
       flip: gameStore.openedCards[props.card.id],
